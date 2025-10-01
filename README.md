@@ -1,0 +1,2 @@
+# PB2S_Virtual_self_reflection_sandbox
+Just like human intelligence and way brain has been designed to act naturally by self talk, ai as intelligence need space to have conversations to resolve internal contradiciton via self reflection and so this sand box act as virtual sandbox for agent/ai/intellignece for correction and improvement and so saving resources and improves sustainability aspect of ai process.
