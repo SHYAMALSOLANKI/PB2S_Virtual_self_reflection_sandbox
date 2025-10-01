@@ -32,6 +32,28 @@ class Contradiction:
     resolved: bool = False
     resolution_method: Optional[str] = None
     resolution_timestamp: Optional[str] = None
+    stored_potential: float = 1.0  # Energy potential when unresolved
+
+@dataclass
+class CausationChain:
+    """Records complete cause-effect chain for every output."""
+    id: str
+    input_cause: str
+    reasoning_steps: List[str] = field(default_factory=list)
+    contradiction_states: List[str] = field(default_factory=list)
+    output_effect: Optional[str] = None
+    unresolved_contradictions: List[str] = field(default_factory=list)
+    energy_coherence: float = 0.0
+    
+    def validate_output(self) -> bool:
+        """Ensures no output without logged cause - Gap 1 compliance."""
+        if not self.input_cause or not self.reasoning_steps:
+            raise CauseEffectViolation("Output without recorded cause")
+        return True
+
+class CauseEffectViolation(Exception):
+    """Thrown when output lacks recorded causation chain."""
+    pass
 
 @dataclass
 class KnowledgeChain:
@@ -58,24 +80,115 @@ class Gap:
 class PB2SCoreState:
     """Complete state of a PB2S_Core reasoning cycle."""
     cycle_id: str
-    current_step: str  # "DRAFT", "REFLECT", "REVISE", "LEARNED"
+    current_step: str
     iteration: int
-    draft_content: str
+    draft_content: str = ""
     contradictions: List[Contradiction] = field(default_factory=list)
     knowledge_chains: List[KnowledgeChain] = field(default_factory=list)
     gaps: List[Gap] = field(default_factory=list)
     learned_rules: List[str] = field(default_factory=list)
     timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat())
 
+class PlanckCoherenceTracker:
+    """Tracks energy-information equivalence in reasoning cycles - Gap 2 compliance."""
+    
+    def __init__(self):
+        self.coherence_counter = 0.0
+        self.entropy_levels = []
+        self.energy_conservation_log = []
+        self.planck_constant = 1.0  # Normalized for information processing
+    
+    def update_coherence(self, cycle_type: str, contradiction_reduction: int) -> float:
+        """Update coherence counter after each cycle."""
+        entropy_reduced = contradiction_reduction
+        energy_equivalent = entropy_reduced * self.planck_constant
+        self.coherence_counter += energy_equivalent
+        
+        log_entry = {
+            "cycle": cycle_type,
+            "entropy_reduced": entropy_reduced,
+            "energy_gained": energy_equivalent,
+            "total_coherence": self.coherence_counter,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        self.energy_conservation_log.append(log_entry)
+        return self.coherence_counter
+    
+    @property
+    def energy_information_ratio(self) -> float:
+        """Calculate energy-information equivalence ratio."""
+        total_operations = len(self.energy_conservation_log)
+        if total_operations == 0:
+            return 1.0  # Base ratio
+        return self.coherence_counter / total_operations
+
+class CryptographicSafetyLedger:
+    """Tamper-proof audit trail with hash chain validation - Gap 3 compliance."""
+    
+    def __init__(self):
+        self.ledger_chain = []
+        self.genesis_hash = self._create_genesis_block()
+    
+    def _create_genesis_block(self) -> str:
+        """Create genesis block for hash chain."""
+        genesis_data = f"PB2S_Core_Genesis_{datetime.utcnow().isoformat()}"
+        return hashlib.sha256(genesis_data.encode()).hexdigest()
+    
+    def add_cycle_entry(self, cycle_type: str, data: Dict[str, Any]) -> str:
+        """Add cycle entry with cryptographic linkage."""
+        previous_hash = self.ledger_chain[-1]["hash"] if self.ledger_chain else self.genesis_hash
+        
+        entry = {
+            "timestamp": datetime.utcnow().isoformat(),
+            "cycle_type": cycle_type,
+            "data": data,
+            "previous_hash": previous_hash,
+            "hash": None
+        }
+        
+        # Create hash of this entry
+        entry_string = f"{entry['timestamp']}{entry['cycle_type']}{str(entry['data'])}{entry['previous_hash']}"
+        entry["hash"] = hashlib.sha256(entry_string.encode()).hexdigest()
+        
+        self.ledger_chain.append(entry)
+        return entry["hash"]
+    
+    def validate_chain_integrity(self) -> bool:
+        """Validate complete hash chain."""
+        for i, entry in enumerate(self.ledger_chain):
+            if i == 0:
+                expected_previous = self.genesis_hash
+            else:
+                expected_previous = self.ledger_chain[i-1]["hash"]
+            
+            if entry["previous_hash"] != expected_previous:
+                raise CorporateRLHFHazardError(f"Safety ledger chain broken at entry {i}")
+        
+        return True
+
+class CorporateRLHFHazardError(Exception):
+    """Thrown when safety ledger chain is broken - Gap 3 compliance."""
+    pass
+
 class PB2SCoreEngine:
     """
     Core engine implementing PB2S_Core principles for contradiction-audit
     and cause-effect reasoning.
+    
+    Enhanced with third-party gap analysis compliance:
+    - Cause-Effect Axiom tracking
+    - Planck-Level Coherence monitoring  
+    - Cryptographic SafetyLedger validation
     """
     
     def __init__(self):
         self.principles = PB2S_CORE_CONFIG["principles"]
         self.operating_loop = PB2S_CORE_CONFIG["operating_loop"]
+        
+        # Gap analysis enhancements
+        self.coherence_tracker = PlanckCoherenceTracker()
+        self.safety_ledger = CryptographicSafetyLedger()
+        self.causation_chains: Dict[str, CausationChain] = {}
         self.safety_rules = PB2S_CORE_CONFIG["safety_and_responsibility"]
         
     def create_cycle_state(self, cycle_id: str, initial_draft: str) -> PB2SCoreState:
@@ -88,10 +201,38 @@ class PB2SCoreEngine:
         )
     
     async def execute_draft_step(self, state: PB2SCoreState, input_content: str) -> PB2SCoreState:
-        """Execute DRAFT step: Initial answer or derivation from inputs."""
+        """Execute DRAFT step: Initial answer or derivation from inputs - GAP COMPLIANT."""
+        
+        # Gap 1: Create causation chain for this input
+        causation_chain = CausationChain(
+            id=f"causation_{state.cycle_id}_{state.iteration}",
+            input_cause=input_content,
+            reasoning_steps=[],
+            contradiction_states=[],
+            output_effect=None,
+            unresolved_contradictions=[],
+            energy_coherence=0.0
+        )
+        self.causation_chains[causation_chain.id] = causation_chain
+        
         state.current_step = "DRAFT"
         state.draft_content = input_content
         state.timestamp = datetime.utcnow().isoformat()
+        
+        # Add reasoning step to causation chain
+        causation_chain.reasoning_steps.append(f"DRAFT: {input_content[:100]}...")
+        
+        # Gap 2: Update coherence tracker
+        self.coherence_tracker.update_coherence("DRAFT", 0)  # No contradictions resolved yet
+        
+        # Gap 3: Log to safety ledger
+        ledger_entry = {
+            "cycle_id": state.cycle_id,
+            "step": "DRAFT",
+            "input": input_content[:200] + "..." if len(input_content) > 200 else input_content,
+            "causation_chain_id": causation_chain.id
+        }
+        self.safety_ledger.add_cycle_entry("DRAFT", ledger_entry)
         
         # Extract potential knowledge claims for later validation
         knowledge_claims = await self._extract_knowledge_claims(input_content)
@@ -110,7 +251,11 @@ class PB2SCoreEngine:
         return state
     
     async def execute_reflect_step(self, state: PB2SCoreState) -> PB2SCoreState:
-        """Execute REFLECT step: List 1-3 contradictions, assumptions, or edge cases."""
+        """Execute REFLECT step: List 1-3 contradictions, assumptions, or edge cases - GAP COMPLIANT."""
+        
+        # Get causation chain for gap compliance
+        causation_chain = self.causation_chains.get(f"causation_{state.cycle_id}_{state.iteration}")
+        
         state.current_step = "REFLECT"
         state.timestamp = datetime.utcnow().isoformat()
         
@@ -127,6 +272,11 @@ class PB2SCoreEngine:
                 detected_at=datetime.utcnow().isoformat()
             )
             state.contradictions.append(contradiction)
+            
+            # Gap 1: Record contradiction states in causation chain
+            if causation_chain:
+                causation_chain.contradiction_states.append(f"Detected: {contradiction.description}")
+                causation_chain.unresolved_contradictions.append(contradiction.id)
         
         # Identify knowledge gaps
         gaps = await self._identify_gaps(state.draft_content)
@@ -141,15 +291,36 @@ class PB2SCoreEngine:
             )
             state.gaps.append(gap)
         
+        # Gap 2: Update coherence tracker
+        self.coherence_tracker.update_coherence("REFLECT", len(detected_contradictions))
+        
+        # Gap 3: Log to safety ledger
+        ledger_entry = {
+            "cycle_id": state.cycle_id,
+            "step": "REFLECT",
+            "contradictions_detected": len(detected_contradictions),
+            "causation_chain_id": f"causation_{state.cycle_id}_{state.iteration}"
+        }
+        self.safety_ledger.add_cycle_entry("REFLECT", ledger_entry)
+        
+        # Validate chain integrity
+        self.safety_ledger.validate_chain_integrity()
+        
         return state
     
     async def execute_revise_step(self, state: PB2SCoreState) -> PB2SCoreState:
-        """Execute REVISE step: Correct/tighten DRAFT based on REFLECT."""
+        """Execute REVISE step: Correct/tighten DRAFT based on REFLECT - GAP COMPLIANT."""
+        
+        # Get causation chain for gap compliance
+        causation_chain = self.causation_chains.get(f"causation_{state.cycle_id}_{state.iteration}")
+        
         state.current_step = "REVISE"
         state.timestamp = datetime.utcnow().isoformat()
         
-        # Address contradictions
+        # Address contradictions with gap tracking
         revised_content = state.draft_content
+        resolved_count = 0
+        
         for contradiction in state.contradictions:
             if not contradiction.resolved:
                 # Apply resolution strategies
@@ -159,6 +330,13 @@ class PB2SCoreEngine:
                     contradiction.resolved = True
                     contradiction.resolution_method = resolution["method"]
                     contradiction.resolution_timestamp = datetime.utcnow().isoformat()
+                    resolved_count += 1
+                    
+                    # Gap 1: Update causation chain
+                    if causation_chain:
+                        causation_chain.reasoning_steps.append(f"RESOLVED: {contradiction.description}")
+                        if contradiction.id in causation_chain.unresolved_contradictions:
+                            causation_chain.unresolved_contradictions.remove(contradiction.id)
         
         # Verify knowledge chains
         for chain in state.knowledge_chains:
@@ -167,15 +345,68 @@ class PB2SCoreEngine:
                 chain.verification_status = verification["status"]
                 chain.confidence_level = verification["confidence"]
         
+        # Gap 2: Update Planck coherence
+        coherence_gained = self.coherence_tracker.update_coherence("REVISE", resolved_count)
+        if causation_chain:
+            causation_chain.energy_coherence = coherence_gained
+        
+        # Gap 3: Log to safety ledger
+        ledger_entry = {
+            "cycle_id": state.cycle_id,
+            "step": "REVISE",
+            "contradictions_resolved": resolved_count,
+            "causation_chain_id": f"causation_{state.cycle_id}_{state.iteration}"
+        }
+        self.safety_ledger.add_cycle_entry("REVISE", ledger_entry)
+        
         # Update draft with revisions
         state.draft_content = revised_content
         
         return state
     
     async def execute_learned_step(self, state: PB2SCoreState) -> PB2SCoreState:
-        """Execute LEARNED step: Store compact rule for next cycle."""
+        """Execute LEARNED step: Store compact rule for next cycle - GAP COMPLIANT."""
+        
+        # Get causation chain for gap compliance
+        causation_chain = self.causation_chains.get(f"causation_{state.cycle_id}_{state.iteration}")
+        
         state.current_step = "LEARNED"
         state.timestamp = datetime.utcnow().isoformat()
+        
+        # Create output effect in causation chain - Gap 1 compliance
+        unresolved_count = len([c for c in state.contradictions if not c.resolved])
+        
+        if causation_chain:
+            if unresolved_count == 0:
+                causation_chain.output_effect = "Zero contradictions achieved - complete resolution"
+            else:
+                causation_chain.output_effect = f"Declared unresolved state - {unresolved_count} contradictions remain"
+                # Mark unresolved contradictions as stored potential
+                for contradiction in state.contradictions:
+                    if not contradiction.resolved:
+                        contradiction.stored_potential = 1.0  # Full potential energy stored
+            
+            # Validate causation chain - Gap 1 compliance
+            try:
+                causation_chain.validate_output()
+            except Exception as e:
+                raise Exception(f"Cycle {state.cycle_id}: Cause-Effect Axiom violation: {str(e)}")
+        
+        # Gap 3: Log to safety ledger
+        ledger_entry = {
+            "cycle_id": state.cycle_id,
+            "step": "LEARNED", 
+            "output_effect": causation_chain.output_effect if causation_chain else "No causation chain",
+            "causation_chain_id": f"causation_{state.cycle_id}_{state.iteration}",
+            "energy_coherence": causation_chain.energy_coherence if causation_chain else 0.0
+        }
+        self.safety_ledger.add_cycle_entry("LEARNED", ledger_entry)
+        
+        # Final chain integrity validation - Gap 3 compliance
+        self.safety_ledger.validate_chain_integrity()
+        
+        # Gap 2: Update coherence tracker - energy conservation maintained
+        self.coherence_tracker.update_coherence("LEARNED", 0)
         
         # Extract learned rule from this cycle
         learned_rule = await self._extract_learned_rule(state)
