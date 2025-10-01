@@ -1,0 +1,9 @@
+# Climate Education Activities
+
+## Carbon Footprint Calculator
+**Type:** calculation_activity
+**Duration:** 10 minutes
+
+Students calculate their personal carbon footprint and identify reduction strategies
+
+### Instructions:

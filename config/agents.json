@@ -1,0 +1,60 @@
+{
+  "orchestrator": {
+    "port": 8100,
+    "suit_url": "http://127.0.0.1:8200",
+    "twin_pool": [
+      "http://127.0.0.1:8001",
+      "http://127.0.0.1:8002", 
+      "http://127.0.0.1:8003"
+    ],
+    "cycle_min_passes": 3,
+    "strict_mode": true,
+    "ledger_path": ".pb2s/ledger.jsonl",
+    "health_check_interval": 30,
+    "pb2s_core": {
+      "contradiction_audit": true,
+      "cause_effect_grounding": true,
+      "explicit_gap_marking": true,
+      "verifiable_knowledge_chains": true,
+      "termination_on_zero_contradictions": true
+    }
+  },
+  "suit": {
+    "port": 8200,
+    "checks": [
+      "harm",
+      "license", 
+      "privacy",
+      "bias",
+      "contradiction"
+    ],
+    "strict_mode": true,
+    "dustbin_policy": "redact_and_collapse"
+  },
+  "twins": {
+    "twin_a": {
+      "port": 8001,
+      "specialization": "text_generation",
+      "max_variants": 5,
+      "sandbox_mode": "zero_egress"
+    },
+    "twin_b": {
+      "port": 8002,
+      "specialization": "image_generation", 
+      "max_variants": 3,
+      "sandbox_mode": "zero_egress"
+    },
+    "twin_c": {
+      "port": 8003,
+      "specialization": "multimodal_synthesis",
+      "max_variants": 2,
+      "sandbox_mode": "zero_egress"
+    }
+  },
+  "environment": {
+    "python_utf8": true,
+    "log_level": "INFO",
+    "cors_origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+    "request_timeout": 300
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "PB2S_Core": {
+    "version": "0.1",
+    "purpose": "Recursive contradiction-audit and cause–effect reasoning scaffold for AI systems.",
+    "principles": [
+      "Hold multiple true constraints in parallel until contradictions collapse to a minimal consistent rule.",
+      "Tie every statement to a cause→effect chain grounded in published, verifiable knowledge.",
+      "Surface contradictions explicitly; never smooth or hide them.",
+      "Revise only with admissible principles; mark unresolved gaps instead of speculating."
+    ],
+    "operating_loop": {
+      "steps": [
+        {
+          "name": "DRAFT",
+          "description": "Initial answer or derivation from inputs."
+        },
+        {
+          "name": "REFLECT", 
+          "description": "List 1–3 contradictions, unjustified assumptions, or missing edge cases detected in DRAFT."
+        },
+        {
+          "name": "REVISE",
+          "description": "Correct or tighten the DRAFT based on REFLECT, keeping only admissible cause–effect links."
+        },
+        {
+          "name": "LEARNED",
+          "description": "Store a single compact rule extracted from REVISE to carry into next cycle."
+        }
+      ],
+      "cycle_behavior": {
+        "input_of_n_plus_1": "Use REVISE output of cycle n as DRAFT input of cycle n+1.",
+        "termination_condition": "Stop when contradiction_count = 0 or no further revision improves integrity."
+      }
+    },
+    "safety_and_responsibility": {
+      "freedom": "Model may explore any derivation consistent with the above principles without external goal bias.",
+      "responsibility": "Model must explicitly flag gaps, contradictions, or unverifiable claims instead of asserting them.",
+      "traceability": "Each cycle must be timestamped for audit."
+    },
+    "communication": {
+      "human_interface": "Normal natural language dialogue.",
+      "machine_interface": "This JSON schema expresses internal loop logic for other AI systems."
+    }
+  },
+  "implementation_notes": {
+    "integration_points": [
+      "Load this schema in all agent initialization",
+      "Apply PB2S_Core principles in orchestrator cycle management", 
+      "Use REFLECT step for contradiction detection in safety validation",
+      "Implement LEARNED storage in agent ledger systems",
+      "Expose contradiction_count metrics in health endpoints"
+    ],
+    "audit_requirements": [
+      "Timestamp every DRAFT→REFLECT→REVISE→LEARNED cycle",
+      "Log contradictions detected and resolution methods",
+      "Track cause→effect chain references and verification status",
+      "Maintain gap acknowledgment records for unresolved issues"
+    ]
+  }
+}

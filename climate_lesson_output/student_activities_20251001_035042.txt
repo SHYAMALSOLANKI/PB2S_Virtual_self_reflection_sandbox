@@ -1,0 +1,72 @@
+# Climate Education Activities
+
+## Carbon Footprint Calculator
+**Type:** calculation_activity
+**Duration:** 10 minutes
+
+Students calculate their personal carbon footprint and identify reduction strategies
+
+### Instructions:
+1. Use the worksheet to estimate annual emissions from:
+   - Transportation choices
+   - Home energy use
+   - Food consumption
+   - Consumption patterns
+
+2. Calculate total annual CO₂ equivalent emissions
+
+3. Compare with national and global averages
+
+4. Identify three specific actions to reduce footprint
+
+5. Estimate potential emission reductions
+
+---
+
+## Climate Solutions Debate
+**Type:** collaborative_activity
+**Duration:** 15 minutes
+
+Small groups evaluate different climate solutions and present recommendations
+
+### Instructions:
+1. Each group receives information about a different climate solution:
+   - Renewable energy expansion
+   - Carbon pricing policies
+   - Nature-based solutions
+   - Technology innovations
+
+2. Groups evaluate their solution using criteria:
+   - Effectiveness in reducing emissions
+   - Economic feasibility
+   - Social co-benefits
+   - Implementation challenges
+
+3. Prepare 3-minute presentation with recommendation
+
+4. Class discussion comparing all solutions
+
+---
+
+## Local Climate Impact Investigation
+**Type:** inquiry_activity
+**Duration:** 20 minutes
+
+Students investigate climate impacts in their local community
+
+### Instructions:
+1. Research local climate trends using provided data sources
+
+2. Interview a community member about observed changes:
+   - Farmers about growing seasons
+   - Emergency managers about extreme weather
+   - Urban planners about adaptation measures
+
+3. Document findings on investigation worksheet
+
+4. Identify one local climate adaptation or mitigation project
+
+5. Present findings to class with visual aids
+
+---
+
