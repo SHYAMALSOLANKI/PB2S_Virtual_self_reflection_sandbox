@@ -1,4 +1,4 @@
-# PB2S+Twin Multi-Agent System
+# PB2S+Twin Multi-Agent System: Twin here is not outside duplication but natural virtual space created via code for reflection when only one agent is applied and virtually upto 5 agents can be deployed with single agent capabilties. 
 
 🏭 **A distributed AI agent architecture implementing the PB2S (Plan-Build-2-S) cycle with comprehensive safety validation**
 
