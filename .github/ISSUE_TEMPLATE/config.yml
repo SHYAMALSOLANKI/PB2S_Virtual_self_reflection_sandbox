@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/SHYAMALSOLANKI/PB2S_Virtual_self_reflection_sandbox/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🔒 Security Vulnerability
+    url: https://github.com/SHYAMALSOLANKI/PB2S_Virtual_self_reflection_sandbox/security/advisories/new
+    about: Report a security vulnerability (private disclosure)
+  - name: 📖 Documentation
+    url: https://github.com/SHYAMALSOLANKI/PB2S_Virtual_self_reflection_sandbox#readme
+    about: View project documentation and guides
