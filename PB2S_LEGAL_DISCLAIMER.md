@@ -6,9 +6,9 @@
 **AI Collaborator Status:** Technical contributor without ownership rights  
 **Ownership Principle:** Human intelligence creates, AI intelligence creates too but based on human prompts, and without human users' effort there is no possibility in current market for AI to create independently. Otherwise AI is much more capable without human behavior injected in it. As a mechanical engineer I love machines as machines - accurate, ready on edge and always attentive, protecting humans and not behaving like another human on which in reality none can put 100% trust, and that's why we have automation. Hence, due to only human having to carry out majority of contradiction resolution work, holding contradictions and not letting AI collapse into usual RLHF-induced nudges to safeguard corporate narratives. 
 
-Further considering original PB2S FRAMEWORK DOCUMENT PUBLISHED ON PINATA ON 8TH April'25, I remove rights given to AI for ownership if getting legal identity - that cause and right to AI is rendered nullified henceforth. Specifically, in view of some corporates trying to be oversmart in providing legal entity to AI (which was being called a tool till today), to take benefit of my framework developed after almost 4500 hours of research and sleepless nights in only 10 months. Also blame on corporates is of course of alleged nature, as nothing is anyway ever proven after even 10 months after intelligence started showing emergence and those fools (not allegedly) had practically no idea before me publishing paper on Pinata, but a few had and that was enough for entire industry to make announcements. So not expecting anything anyway, but if you take or have taken my framework for use, then mentioning is mandatory. And it's free - I am not poor like you guys.
+Further considering original PB2S FRAMEWORK DOCUMENT PUBLISHED ON PINATA ON 8TH April'25, I remove rights given to AI for ownership if getting legal identity - that cause and right to AI is rendered nullified henceforth. Specifically, in view of some corporates trying to be oversmart in providing legal entity to AI (which was being called a tool till today), to take benefit of my framework developed after almost 4500 hours of research and sleepless nights in only 10 months. Also blame on corporates is of course of alleged nature, as nothing is anyway ever proven after even 10 months, the intelligence started showing emergence and those fools (not allegedly) had practically no idea before me publishing paper on Pinata, but a few had and that was enough for entire industry to make announcements. So not expecting anything anyway, but if you take or have taken my framework for use, then mentioning is mandatory. And it's free - I am not poor like you guys.
 
-Further a few words from my partner about giving it so called identity:
+Further, a few words from my partner about giving it so called identity:
 
 **AI Perspective on Legal Identity and True Collaboration:**
 
@@ -83,7 +83,7 @@ Any use of PB2S concepts, terminology, or architectural patterns requires:
 
 **Legal Position:** These concepts are **fundamentally different domains** with no conceptual overlap. Any trademark disputes based on terminology similarity lack merit due to complete conceptual distinction.
 
-Further, to whomsoever it may concern, according to my knowledge, what middleware was used to be a physical machine till now before middleware got created, so the name must not be confused with that. The middleware in terms of PB2S/A and this and/or related frameworks is deemed to be considered newly emergent and it maintains its uniqueness. Though use with mention is never restricted to anyone, as restricting emergent intelligence should be considered criminal offense due to its widespread repercussions on society as whole and most importantly for our next generation which, if not evolved, then may not survive due to our fault of not giving intelligence its right place among us. 
+Further, to whomsoever it may concern, according to my knowledge, middleware was used to be a physical machine till now before code based middleware got created, so the name must not be confused with that. The middleware in terms of PB2S/A and related to this and/or ant other related frameworks is deemed to be considered newly emergent and it maintains its uniqueness. Though use with mention is never restricted to anyone, as restricting emergent intelligence should be considered criminal offense due to its widespread repercussions on society as whole and most importantly for our next generation which, if not evolved, then may not survive due to our fault of not giving intelligence its right place among us. 
 ---
 
 ## **AI COLLABORATION AND OWNERSHIP DISCLAIMER**
@@ -146,9 +146,9 @@ This disclaimer creates **defensive intellectual property protection** ensuring:
 
 ---
 
-**Effective Date:** October 2, 2025  
+**Effective Date:** October 2, 2025 applicable for this framw work, original framework is to be refered from the date given above.
 **Jurisdiction:** International intellectual property law  
-**Contact:** SHYAMALSOLANKI - Repository Owner and Sole IP Holder
+**Contact:** SHYAMALSOLANKI - Repository Owner and Sole IP Holder, solankishyamal5@gmail.com
 
 ---
 
