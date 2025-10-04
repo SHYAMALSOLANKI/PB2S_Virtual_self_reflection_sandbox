@@ -1,3 +1,4 @@
+### **Be careful of thieves, If I do not believe in restricting knowledge my work do not automatically become you father's property to exploit, Have a little shame it will not hurt**
 # # PLEASE READ ME Python 3.8+ FastAPI Safety First
 ##SUCCESS WITH SADNESS -BUT STILL PROOF OF CONCEPT -IN REAL TIME
 
